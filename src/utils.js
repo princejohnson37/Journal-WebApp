@@ -17,7 +17,7 @@ const checkEmailExists = async (email) => {
         user_email: email,
       },
     });
-
+    console.log("checkemailexists",user);
     return user; // If a user is found, it will be returned; otherwise, null is returned.
   } catch (error) {
     throw error;
@@ -27,10 +27,19 @@ const checkEmailExists = async (email) => {
 };
 
 const getUserId = async (email) => {
-  console.log(email);
-  const user_data = await pool.query(queries.getUserId, [email]);
-  console.log(user_data.rows);
-  return user_data.rows[0].user_id;
+  const user_data = await prisma.user.findFirst({
+    where:{
+      user_email:email
+    },
+    select:{
+      user_id:true
+    }
+  });
+  console.log("getuserid",getUserId);
+  return user_data.user_id;
+
+  // const user_data = await pool.query(queries.getUserId, [email]);
+  // return user_data.rows[0].user_id;
 };
 
 function generateAccessToken(user_id) {

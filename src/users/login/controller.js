@@ -1,23 +1,19 @@
 
 const { checkEmailExists } = require("../../utils");
-const queries = require("../queries");
 const bcrypt = require("bcrypt");
 const { generateAccessToken } = require("../../utils");
-const {PrismaClient} = require('@prisma/client');
-
-const primsa = new PrismaClient();
+const prisma = require('../../../prisma/prisma-client');
 
 const userLogin = async (req, res) => {
+  // TODO userLogin
   const { user_email, user_password } = req.body;
-  // console.log(req.body);
   //check if email exists
   if (await checkEmailExists(user_email)) {
-    const user = await primsa.user.findUnique({
+    const user = await prisma.user.findUnique({
       where:{
         user_email:user_email
       }
     })
-    console.log(user);
     const passwordMatch = await bcrypt.compare(user_password, user.user_password);
     if(!passwordMatch){
       console.log("wrong password");
@@ -25,7 +21,6 @@ const userLogin = async (req, res) => {
     }
     else{
       const accessToken = generateAccessToken(user_email);
-      console.log(accessToken);
       res.json({
         isAuth:true,
         message:"Logged In",

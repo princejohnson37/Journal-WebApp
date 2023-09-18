@@ -2,19 +2,19 @@
 const { getUserId } = require("../utils");
 const queries = require("./queries");
 
+
+// TODO getDiaryEntries
 const getDiaryEntries = async (req, res) => {
   const user_email = req.user;
-  console.log(`user email is ${user_email}`);
   const user_id = await getUserId(user_email.user_id);
   pool.query(queries.getDiaryEntries, [user_id], (error, results) => {
     res.send(results.rows);
   });
 };
-
+// TODO getDiaryEntry
 const getDiaryEntry = async (req, res) => {
   const user_email = req.user;
   const user_id = await getUserId(user_email.user_id);
-  console.log(req.params);
   const diary_id = req.params.id;
   pool.query(queries.getDiaryEntry, [diary_id, user_id], (error, results) => {
     if (error) throw error;
@@ -22,6 +22,8 @@ const getDiaryEntry = async (req, res) => {
   });
 };
 
+
+// TODO postDiaryEnrty
 const postDiaryEntry = async (req, res) => {
   const user_email = req.user.user_id;
   const user_id = await getUserId(user_email);
@@ -46,6 +48,8 @@ const postDiaryEntry = async (req, res) => {
   );
 };
 
+
+//TODO updateDiaryEntry
 const updateDiaryEntry = async (req, res) => {
   const user_email = req.user.user_id;
   const user_id = await getUserId(user_email);
@@ -69,6 +73,8 @@ const updateDiaryEntry = async (req, res) => {
   );
 };
 
+
+// TODO deleteDiaryEntry
 const deleteDiaryEntry = async (req, res) => {
   const user_email = req.user.user_id;
   const user_id = await getUserId(user_email);

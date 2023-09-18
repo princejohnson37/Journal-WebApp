@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
 });
 app.use("/api/login", loginRoutes);
 app.use("/api/register", registerRoutes);
-// app.use("/api/diary", diaryRoutes);
+app.use("/api/diary", diaryRoutes);
 
 app.listen(port, () => {
   console.log(`app listening on port ${port}`);

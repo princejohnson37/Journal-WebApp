@@ -1,0 +1,226 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Diary-Application-API",
+    "dateExported": "2023-04-23T19:24:10.108Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "4c77702f-9547-4e45-a010-032a0d842019",
+            "name": "Login",
+            "containerId": "",
+            "created": "2023-04-23T17:49:32.705Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "1d3d4ef4-c8d1-4662-a54d-ba638a35cdee",
+            "name": "Register",
+            "containerId": "",
+            "created": "2023-04-23T17:49:50.913Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "3b040afb-ec85-413e-8836-d97f14a1c64d",
+            "name": "Diary",
+            "containerId": "",
+            "created": "2023-04-23T17:54:47.934Z",
+            "sortNum": 30000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "f7ec161b-7799-4d7a-bc8c-dbd4ff034230",
+            "colId": "443672be-27e1-4ead-bd2a-1aedee4dfc69",
+            "containerId": "1d3d4ef4-c8d1-4662-a54d-ba638a35cdee",
+            "name": "register user using existing email",
+            "url": "localhost:3001/api/register",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-04-23T05:26:12.761Z",
+            "modified": "2023-04-23T17:49:53.116Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user_name\": \"Prince02\",\n  \"user_email\": \"prince@email.com\",\n  \"user_password\": \"password\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "64682ac7-b5eb-4a8e-9216-1ddab76f8883",
+            "colId": "443672be-27e1-4ead-bd2a-1aedee4dfc69",
+            "containerId": "4c77702f-9547-4e45-a010-032a0d842019",
+            "name": "Login with incorrect email or password",
+            "url": "localhost:3001/api/login",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-04-23T15:24:11.944Z",
+            "modified": "2023-04-23T17:49:36.521Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user_email\": \"prince22@email.com\",\n  \"user_password\": \"password\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "e86e1e13-4d53-4f08-b0d4-304b55b255fb",
+            "colId": "443672be-27e1-4ead-bd2a-1aedee4dfc69",
+            "containerId": "1d3d4ef4-c8d1-4662-a54d-ba638a35cdee",
+            "name": "Register new user",
+            "url": "localhost:3001/api/register",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-04-23T15:19:53.244Z",
+            "modified": "2023-04-23T17:49:54.453Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user_name\": \"Prince03\",\n  \"user_email\": \"prince03@email.com\",\n  \"user_password\": \"password\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "34ada8ab-50a8-4848-8b5b-19875069de31",
+            "colId": "443672be-27e1-4ead-bd2a-1aedee4dfc69",
+            "containerId": "4c77702f-9547-4e45-a010-032a0d842019",
+            "name": "login with invalid password",
+            "url": "localhost:3001/api/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-04-23T17:45:58.423Z",
+            "modified": "2023-04-23T17:49:38.881Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user_email\": \"prince@email.com\",\n  \"user_password\": \"pass\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "523f366b-9c0a-4a16-a137-100babf27bc5",
+            "colId": "443672be-27e1-4ead-bd2a-1aedee4dfc69",
+            "containerId": "4c77702f-9547-4e45-a010-032a0d842019",
+            "name": "Login with valid email and pass",
+            "url": "localhost:3001/api/login",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2023-04-23T17:50:11.689Z",
+            "modified": "2023-04-23T17:50:49.126Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user_email\":\"prince@email.com\",\n  \"user_password\":\"password\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "0d331d4d-d61b-42d6-8373-e8dbe205b1e5",
+            "colId": "443672be-27e1-4ead-bd2a-1aedee4dfc69",
+            "containerId": "3b040afb-ec85-413e-8836-d97f14a1c64d",
+            "name": "Get all diary entries",
+            "url": "localhost:3001/api/diary/all",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2023-04-23T17:55:02.211Z",
+            "modified": "2023-04-23T18:53:26.567Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoicHJpbmNlQGVtYWlsLmNvbSIsImlhdCI6MTY4MjI3NTk5MywiZXhwIjoxNjgyMjc5NTkzfQ.gXNlrNQmF2raHjAWuuCWR-5gbFTN9PfiQjoPVPyRHG0"
+            },
+            "tests": []
+        },
+        {
+            "_id": "9e18fae4-ea42-4d40-bef3-9be4f56ae97b",
+            "colId": "443672be-27e1-4ead-bd2a-1aedee4dfc69",
+            "containerId": "3b040afb-ec85-413e-8836-d97f14a1c64d",
+            "name": "get diary entry by id",
+            "url": "localhost:3001/api/diary/entry/8",
+            "method": "GET",
+            "sortNum": 75000,
+            "created": "2023-04-23T18:32:16.011Z",
+            "modified": "2023-04-23T18:52:58.432Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoicHJpbmNlQGVtYWlsLmNvbSIsImlhdCI6MTY4MjI3MjI0OSwiZXhwIjoxNjgyMjc1ODQ5fQ.E24o2nCgDMl5nRrdq9Y_xj4aDAyBYpiXfVntdgngLw0"
+            },
+            "tests": []
+        },
+        {
+            "_id": "b4f5a6af-5790-4971-ab7f-c84122602fc6",
+            "colId": "443672be-27e1-4ead-bd2a-1aedee4dfc69",
+            "containerId": "3b040afb-ec85-413e-8836-d97f14a1c64d",
+            "name": "Post new diary entry",
+            "url": "localhost:3001/api/diary/entry",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2023-04-23T17:58:39.930Z",
+            "modified": "2023-04-23T18:08:03.458Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"diary_location\": \"tvm\",\n  \"diary_content\": \"new content 3\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoicHJpbmNlQGVtYWlsLmNvbSIsImlhdCI6MTY4MjI3MjI0OSwiZXhwIjoxNjgyMjc1ODQ5fQ.E24o2nCgDMl5nRrdq9Y_xj4aDAyBYpiXfVntdgngLw0"
+            },
+            "tests": []
+        },
+        {
+            "_id": "51aa77c6-9ecb-4c85-a463-cc9ac209612f",
+            "colId": "443672be-27e1-4ead-bd2a-1aedee4dfc69",
+            "containerId": "3b040afb-ec85-413e-8836-d97f14a1c64d",
+            "name": "update a diary entry",
+            "url": "localhost:3001/api/diary/update/entry",
+            "method": "PUT",
+            "sortNum": 100000,
+            "created": "2023-04-23T18:41:13.454Z",
+            "modified": "2023-04-23T18:59:46.729Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"diary_id\": 5,\n  \"diary_location\": \"kochi\",\n  \"diary_content\": \"Good day at Cochin\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoicHJpbmNlQGVtYWlsLmNvbSIsImlhdCI6MTY4MjI3NTk5MywiZXhwIjoxNjgyMjc5NTkzfQ.gXNlrNQmF2raHjAWuuCWR-5gbFTN9PfiQjoPVPyRHG0"
+            },
+            "tests": []
+        },
+        {
+            "_id": "af1c693c-d89a-4297-84e0-2541a0d459e8",
+            "colId": "443672be-27e1-4ead-bd2a-1aedee4dfc69",
+            "containerId": "3b040afb-ec85-413e-8836-d97f14a1c64d",
+            "name": "Delete a diary entry",
+            "url": "localhost:3001/api/diary/delete/5",
+            "method": "DELETE",
+            "sortNum": 110000,
+            "created": "2023-04-23T19:06:12.967Z",
+            "modified": "2023-04-23T19:11:03.185Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoicHJpbmNlQGVtYWlsLmNvbSIsImlhdCI6MTY4MjI3NTk5MywiZXhwIjoxNjgyMjc5NTkzfQ.gXNlrNQmF2raHjAWuuCWR-5gbFTN9PfiQjoPVPyRHG0"
+            },
+            "tests": []
+        }
+    ]
+}
