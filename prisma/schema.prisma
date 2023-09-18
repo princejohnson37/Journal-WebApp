@@ -16,11 +16,10 @@ model User {
 
 model Diary {
     diary_id        Int       @id @default(autoincrement())
-    user_id         User      @relation(fields: [userUser_id], references: [user_id])
     diary_content   String
     diary_location  String
     diary_createdAt DateTime  @default(now())
     diary_updatedAt DateTime?
-    usersUser_id    Int
-    userUser_id     Int
+    User            User?     @relation(fields: [userUser_id], references: [user_id])
+    userUser_id     Int?
 }

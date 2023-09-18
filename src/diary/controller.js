@@ -1,7 +1,6 @@
-
 const { getUserId } = require("../utils");
 const queries = require("./queries");
-
+const prisma = require("../../prisma/prisma-client");
 
 // TODO getDiaryEntries
 const getDiaryEntries = async (req, res) => {
@@ -22,32 +21,52 @@ const getDiaryEntry = async (req, res) => {
   });
 };
 
-
 // TODO postDiaryEnrty
 const postDiaryEntry = async (req, res) => {
   const user_email = req.user.user_id;
-  const user_id = await getUserId(user_email);
+  // finding user id to relate diary_id of particular user
+  const userId = await getUserId(user_email);
   const { diary_location, diary_content } = req.body;
   console.log(
-    `useremail:- ${user_email},user_id:-${user_id}, body:- ${req.body}`
+    `(inside postDiaryEntry) useremail:- ${user_email},user_id:-${userId}, body:- ${req.body}`
   );
-  pool.query(
-    queries.postDiaryEntry,
-    [diary_location, diary_content, user_id],
-    (error, results) => {
-      // console.log(results.rows);
-      // returns a flag that indicates whether the insertion was successful or not
-      // console.log(error);
-      if (error) throw error;
-      res.json({
-        success: true,
-        data: results.rows,
-        message: "Diary entry added",
-      });
-    }
-  );
-};
+  try {
+    const newEntry = await prisma.diary.create({
+      data: {
+        diary_content: diary_content,
+        diary_location: diary_location,
+        User: {
+          connect: {
+            user_id: userId,
+          },
+        },
+      },
+    });
+    res.json({
+      success: true,
+      data: newEntry,
+      message: "Diary entry added",
+    });
+  } catch (error) {
+    console.log(error);
+  }
 
+  // pool.query(
+  //   queries.postDiaryEntry,
+  //   [diary_location, diary_content, user_id],
+  //   (error, results) => {
+  //     // console.log(results.rows);
+  //     // returns a flag that indicates whether the insertion was successful or not
+  //     // console.log(error);
+  //     if (error) throw error;
+  //     res.json({
+  //       success: true,
+  //       data: results.rows,
+  //       message: "Diary entry added",
+  //     });
+  //   }
+  // );
+};
 
 //TODO updateDiaryEntry
 const updateDiaryEntry = async (req, res) => {
@@ -72,7 +91,6 @@ const updateDiaryEntry = async (req, res) => {
     }
   );
 };
-
 
 // TODO deleteDiaryEntry
 const deleteDiaryEntry = async (req, res) => {

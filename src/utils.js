@@ -35,11 +35,7 @@ const getUserId = async (email) => {
       user_id:true
     }
   });
-  console.log("getuserid",getUserId);
   return user_data.user_id;
-
-  // const user_data = await pool.query(queries.getUserId, [email]);
-  // return user_data.rows[0].user_id;
 };
 
 function generateAccessToken(user_id) {

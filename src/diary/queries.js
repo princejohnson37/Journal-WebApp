@@ -1,5 +1,5 @@
-const postDiaryEntry =
-  "insert into diary (diary_location, diary_content, user_id) values ($1,$2,$3)";
+// const postDiaryEntry =
+//   "insert into diary (diary_location, diary_content, user_id) values ($1,$2,$3)";
 
 const getDiaryEntries = "select * from diary where user_id = $1";
 const updateDiaryEntry =
@@ -8,7 +8,7 @@ const deleteDiaryEntry = "DELETE FROM diary WHERE diary_id=$1 and user_id=$2";
 const getDiaryEntry = "Select * from diary where diary_id=$1 and user_id=$2";
 
 module.exports = {
-  postDiaryEntry,
+  // postDiaryEntry,
   getDiaryEntries,
   getDiaryEntry,
   getDiaryEntry,
