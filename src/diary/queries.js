@@ -11,7 +11,6 @@ module.exports = {
   // postDiaryEntry,
   getDiaryEntries,
   getDiaryEntry,
-  getDiaryEntry,
   updateDiaryEntry,
   deleteDiaryEntry,
 };

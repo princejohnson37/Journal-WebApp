@@ -6,19 +6,39 @@ const prisma = require("../../prisma/prisma-client");
 const getDiaryEntries = async (req, res) => {
   const user_email = req.user;
   const user_id = await getUserId(user_email.user_id);
-  pool.query(queries.getDiaryEntries, [user_id], (error, results) => {
-    res.send(results.rows);
+  const getEntries = await prisma.diary.findMany({
+    where: {
+      userUser_id: user_id,
+    },
   });
+  res.send(getEntries);
+  // pool.query(queries.getDiaryEntries, [user_id], (error, results) => {
+  //   res.send(results.rows);
+  // });
 };
 // TODO getDiaryEntry
 const getDiaryEntry = async (req, res) => {
   const user_email = req.user;
   const user_id = await getUserId(user_email.user_id);
-  const diary_id = req.params.id;
-  pool.query(queries.getDiaryEntry, [diary_id, user_id], (error, results) => {
-    if (error) throw error;
-    res.json(results.rows);
-  });
+  console.log(user_id);
+  const diary_id = parseInt(req.params.id);
+  try {
+    const getEntry = await prisma.diary.findMany({
+      where: {
+        diary_id: diary_id,
+        userUser_id: user_id,
+      },
+    });
+    res.json({
+      data: getEntry,
+    });
+  } catch (Error) {
+    console.log(Error);
+  }
+  // pool.query(queries.getDiaryEntry, [diary_id, user_id], (error, results) => {
+  //   if (error) throw error;
+  //   res.json(results.rows);
+  // });
 };
 
 // TODO postDiaryEnrty
@@ -27,9 +47,6 @@ const postDiaryEntry = async (req, res) => {
   // finding user id to relate diary_id of particular user
   const userId = await getUserId(user_email);
   const { diary_location, diary_content } = req.body;
-  console.log(
-    `(inside postDiaryEntry) useremail:- ${user_email},user_id:-${userId}, body:- ${req.body}`
-  );
   try {
     const newEntry = await prisma.diary.create({
       data: {

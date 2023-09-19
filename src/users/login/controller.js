@@ -8,6 +8,7 @@ const userLogin = async (req, res) => {
   // TODO userLogin
   const { user_email, user_password } = req.body;
   //check if email exists
+  // TODO cross check fields from return body - user_eamil and user_password
   if (await checkEmailExists(user_email)) {
     const user = await prisma.user.findUnique({
       where:{
