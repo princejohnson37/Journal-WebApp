@@ -6,7 +6,9 @@ const prisma = require('../../../prisma/prisma-client');
 
 const userLogin = async (req, res) => {
   // TODO userLogin
+console.log("hitt");
   const { user_email, user_password } = req.body;
+  console.log(req.body);
   //check if email exists
   // TODO cross check fields from return body - user_eamil and user_password
   if (await checkEmailExists(user_email)) {
